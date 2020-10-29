@@ -1,6 +1,8 @@
 import React from 'react';
 
-const items = ['first line', 'second line']
+import { TodoListtItem } from './TodoListtItem/TodoListtItem'
+
+const items = ['first line', 'second line', 'third line']
 
 export const TodoList = () => {
   return (
@@ -8,7 +10,7 @@ export const TodoList = () => {
       <ul>
         {
           items.map(el => {
-            return <li>{el}</li>
+            return <li><TodoListtItem item={el} /></li>
           })
         }
       </ul>
