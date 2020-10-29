@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TodoListtItem } from './TodoListtItem/TodoListtItem'
+import { TodoListItem } from './TodoListItem/TodoListItem'
 
 const items = ['first line', 'second line', 'third line']
 
@@ -9,8 +9,8 @@ export const TodoList = () => {
     <div>
       <ul>
         {
-          items.map(el => {
-            return <li><TodoListtItem item={el} /></li>
+          items.map((el, i) => {
+            return <li><TodoListItem item={el} important={true ? i === 1 : false} /></li>
           })
         }
       </ul>
