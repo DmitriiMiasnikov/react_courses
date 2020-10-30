@@ -1,12 +1,11 @@
 import './App.css';
 
 import { AppHeader } from './components/AppHeader/AppHeader';
+import { ItemStatusBar } from './components/ItemStatusBar/ItemStatusBar';
 import { SearchPanel } from './components/SearchPanel/SearchPanel';
 import { TodoList } from './components/TodoList/TodoList'
 
 function App() {
-  const isLoggedIn = false;
-
   const todoData = [
     {
       label: 'first line',
@@ -24,9 +23,11 @@ function App() {
 
   return (
     <div className="App">
-      { isLoggedIn ? <div>welcome</div> : <div>please, login</div>}
-      <AppHeader />
+      <AppHeader toDo={1} done={3}/>
+      <div className='top-panel d-flex'>
       <SearchPanel />
+      <ItemStatusBar />
+      </div>
       <TodoList todoData={todoData} />
     </div>
   );
