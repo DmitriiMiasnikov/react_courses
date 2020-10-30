@@ -8,8 +8,8 @@ export const TodoList = ({ todoData }) => {
     <div>
       <ul>
         {
-          todoData.map((el, i) => {
-            return <li><TodoListItem item={el.label} important={el.important} key={i}/></li>
+          todoData.map((item, i) => {
+            return <li key={i}><TodoListItem { ...item }/></li>
           })
         }
       </ul>
