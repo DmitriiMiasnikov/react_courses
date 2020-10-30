@@ -2,15 +2,14 @@ import React from 'react';
 
 import { TodoListItem } from './TodoListItem/TodoListItem'
 
-const items = ['first line', 'second line', 'third line']
 
-export const TodoList = () => {
+export const TodoList = ({ todoData }) => {
   return (
     <div>
       <ul>
         {
-          items.map((el, i) => {
-            return <li><TodoListItem item={el} important={true ? i === 1 : false} /></li>
+          todoData.map((el, i) => {
+            return <li><TodoListItem item={el.label} important={el.important} key={i}/></li>
           })
         }
       </ul>
