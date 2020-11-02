@@ -7,7 +7,7 @@ export const ItemStatusBar = ({ filterAll, filterActive, filterDone }) => {
   const buttons = ['All', 'Active', 'Done']
   const [active, setActive] = useState([true, false, false])
   const activeHandle = (item) => {
-    switch(item) {
+    switch (item) {
       case 0: {
         setActive([true, false, false])
         filterAll()

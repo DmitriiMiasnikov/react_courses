@@ -30,10 +30,10 @@ function App() {
   const filterDone = () => setTodoData(todoData.filter(el => !el.active))
   return (
     <div className="App">
-      <AppHeader toDo={1} done={3}/>
+      <AppHeader toDo={1} done={3} />
       <div className='top-panel d-flex'>
-      <SearchPanel />
-      <ItemStatusBar filterAll={filterAll} filterActive={filterActive} filterDone={filterDone}/>
+        <SearchPanel />
+        <ItemStatusBar filterAll={filterAll} filterActive={filterActive} filterDone={filterDone} />
       </div>
       <TodoList todoData={todoDataList} />
     </div>
