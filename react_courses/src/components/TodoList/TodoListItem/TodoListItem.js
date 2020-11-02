@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './TodoListItem.css'
 
 export const TodoListItem = ({ label, important }) => {
+  const [importantItem, setImportantItem] = useState(important)
+  const importantItemHandle = () => {
+    setImportantItem(!importantItem)
+  }
   const styles = {
-    color: important ? 'steelblue' : 'black',
-    fontWeight: important ? 'bold' : 'normal'
+    color: importantItem ? 'steelblue' : 'black',
+    fontWeight: importantItem ? 'bold' : 'normal'
   }
 
   return (
     <span className='todo-list-item'>
-      <span className='todo-list-item-label' style={styles}>
+      <span className='todo-list-item-label' style={styles} onClick={() => importantItemHandle()}>
         {label}
       </span>
       <button type='button' className='btn btn-outline-success btn-sm float-right'>
