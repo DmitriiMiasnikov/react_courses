@@ -7,7 +7,7 @@ import { SearchPanel } from './components/SearchPanel/SearchPanel';
 import { TodoList } from './components/TodoList/TodoList'
 
 function App() {
-  const todoData = [
+  let todoData = [
     {
       label: 'first line',
       important: false,
@@ -24,10 +24,14 @@ function App() {
       active: false
     },
   ]
+  todoData.forEach((el, i) => el.id = i)
   const [todoDataList, setTodoData] = useState(todoData)
   const filterAll = () => setTodoData(todoData)
   const filterActive = () => setTodoData(todoData.filter(el => el.active))
   const filterDone = () => setTodoData(todoData.filter(el => !el.active))
+  const removeTodo = (id) => {
+    setTodoData(todoDataList.filter(el => el.id !== id))
+  }
   return (
     <div className="App">
       <AppHeader toDo={1} done={3} />
@@ -35,7 +39,7 @@ function App() {
         <SearchPanel />
         <ItemStatusBar filterAll={filterAll} filterActive={filterActive} filterDone={filterDone} />
       </div>
-      <TodoList todoData={todoDataList} />
+      <TodoList todoData={todoDataList} removeTodo={removeTodo}/>
     </div>
   );
 }
