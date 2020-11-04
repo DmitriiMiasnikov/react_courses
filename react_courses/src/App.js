@@ -42,7 +42,7 @@ function App() {
       label: 'four line',
       important: false,
       active: true,
-      id: todoData[todoData.length - 1].id + 1
+      id: Math.max(...todoData.map(el => el.id)) + 1
     }
     todoData = [...todoData, newItem];
     setTodoData([...todoDataList, newItem])
