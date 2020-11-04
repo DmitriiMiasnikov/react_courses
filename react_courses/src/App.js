@@ -11,26 +11,30 @@ function App() {
     {
       label: 'first line',
       important: false,
-      active: true
+      active: true,
+      id: 0
     },
     {
       label: 'second line',
       important: true,
-      active: true
+      active: true,
+      id: 1
     },
     {
       label: 'third line',
       important: false,
-      active: false
+      active: false,
+      id: 2
     },
   ]
-  todoData.forEach((el, i) => el.id = i)
   const [todoDataList, setTodoData] = useState(todoData)
-  const filterAll = () => setTodoData(todoData)
-  const filterActive = () => setTodoData(todoData.filter(el => el.active))
-  const filterDone = () => setTodoData(todoData.filter(el => !el.active))
+  const [removed, setRemoved] = useState([]);
+  const filterAll = () => setTodoData(todoData.filter(el => !removed.includes(el.id)))
+  const filterActive = () => setTodoData(todoData.filter(el => el.active && !removed.includes(el.id)))
+  const filterDone = () => setTodoData(todoData.filter(el => !el.active && !removed.includes(el.id)))
   const removeTodo = (id) => {
     setTodoData(todoDataList.filter(el => el.id !== id))
+    setRemoved([...removed, id])
   }
   return (
     <div className="App">
