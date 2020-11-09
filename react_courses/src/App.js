@@ -31,7 +31,7 @@ let filterListIndex = 0;
 
 function App() {
   const [todoDataList, setTodoData] = useState(todoData)
-
+  const [searchInputEmpty, setSearchInputEmpty] = useState(true);
   const filterAll = () => setTodoData(todoData)
   const filterActive = () => setTodoData(todoData.filter(el => el.active))
   const filterDone = () => setTodoData(todoData.filter(el => !el.active))
@@ -39,6 +39,7 @@ function App() {
   const buttonsHandler = (item) => {
     filterListIndex = item;
     buttons[filterListIndex]()
+    setSearchInputEmpty(true)
   }
   const removeTodo = (id) => {
     todoData = [...todoData.filter(el => el.id !== id)];
@@ -56,14 +57,18 @@ function App() {
   }
   const searchTodo = (value) => {
     if (value) {
+      setSearchInputEmpty(false);
       setTodoData([...todoDataList.filter(el => el.label.includes(value))]);
-    } else buttons[filterListIndex]()
+    } else {
+      setSearchInputEmpty(true);
+      buttons[filterListIndex]()
+    }
   }
   return (
     <div className="App">
       <AppHeader toDo={2} done={1} />
       <div className='top-panel d-flex'>
-        <SearchPanel searchTodo={searchTodo} />
+        <SearchPanel searchTodo={searchTodo} searchInputEmpty={searchInputEmpty}/>
         <ItemStatusBar filterAll={filterAll} filterActive={filterActive} filterDone={filterDone} buttonsHandler={buttonsHandler}/>
       </div>
       <TodoList todoData={todoDataList} removeTodo={removeTodo} />
