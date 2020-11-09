@@ -30,6 +30,7 @@ let todoData = [
 
 function App() {
   const [todoDataList, setTodoData] = useState(todoData)
+
   const filterAll = () => setTodoData(todoData)
   const filterActive = () => setTodoData(todoData.filter(el => el.active))
   const filterDone = () => setTodoData(todoData.filter(el => !el.active))
@@ -37,9 +38,9 @@ function App() {
     todoData = [...todoData.filter(el => el.id !== id)];
     setTodoData([...todoDataList.filter(el => el.id !== id)]);
   }
-  const addTodo = () => {
+  const addTodo = (labelChange) => {
     const newItem = {
-      label: 'four line',
+      label: labelChange,
       important: false,
       active: true,
       id: Math.max(...todoData.map(el => el.id)) + 1
@@ -55,7 +56,7 @@ function App() {
         <ItemStatusBar filterAll={filterAll} filterActive={filterActive} filterDone={filterDone} />
       </div>
       <TodoList todoData={todoDataList} removeTodo={removeTodo} />
-      <ItemAddForm addTodo={addTodo} />
+      <ItemAddForm addTodo={addTodo}/>
     </div>
   );
 }
