@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  // fetch('https://swapi.dev/api/people/1/').then((res) => {
+  //   return res.json()
+  // }).then((res) => {
+  //   console.log(res)
+  // })
+  const url = 'https://swapi.dev/api/people/1/'
+  const getRes = async (url) => {
+    const res = await fetch(url);
+    const body = await res.json();
+    return body;
+  }
+  getRes(url).then((body) => {
+    console.log(body)
+  }).catch((err) => {
+    console.log(err)
+  }) 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
     </div>
   );
 }
