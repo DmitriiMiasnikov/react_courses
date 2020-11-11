@@ -4,11 +4,11 @@ import './Header.css';
 export const Header = ({ headerItems }) => {
   return (
     <div className='header d-flex'>
-      <a href='#'>
       <h3>
-        Star DB
+        <a href='#'>
+          Star DB
+        </a>
       </h3>
-      </a>
       <ul className='d-flex'>
         {
           headerItems.map((el, i) => {

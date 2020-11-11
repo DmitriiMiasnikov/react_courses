@@ -31,4 +31,4 @@ class SwapiResourses {
     return res.results;
   }
 }
-const swapi = new SwapiResourses();
+export const swapi = new SwapiResourses();

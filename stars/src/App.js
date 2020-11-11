@@ -1,8 +1,10 @@
 import './App.css';
+import { swapi } from './Servises/swapiServises'
 import { Header } from './components/Header/Header';
 import { ItemList } from './components/ItemList/ItemList';
 import { PersonDetails } from './components/PersonDetails/PersonDetails';
 import { RandomPlanet } from './components/RandomPlanet/RandomPlanet';
+import React, { useEffect } from 'react';
 
 
 const states = {
@@ -11,17 +13,22 @@ const states = {
     'Planets',
     'Starships'
   ],
-  itemList: null
+  itemList: [
+    '234234',
+    '23423423'
+  ]
 }
 
+
 function App() {
+
   return (
     <div className="App">
       <Header headerItems={states.headerItems}/>
       <RandomPlanet />
       <div className='row md2'>
         <div className='col-md-6'>
-          <ItemList />
+          <ItemList itemList={states.itemList}/>
         </div>
         <div className='col-md-6'>
           <PersonDetails />
