@@ -13,7 +13,6 @@ export const RandomPlanet = () => {
   useEffect(() => {
     updatePlanet()
   }, [])
-  console.log(planet)
   return (
     <div className='random-planet jumptron rounded'>
       <img className='planet-image' src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} />
@@ -28,7 +27,7 @@ export const RandomPlanet = () => {
           </li>
           <li className='list-group-item'>
             <span className='term'>Rotation Period</span> 
-            {planet.rotation_period}
+            {planet.rotationPeriod}
           </li>
           <li className='list-group-item'>
             <span className='term'>Diameter</span> 
