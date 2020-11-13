@@ -12,7 +12,7 @@ class SwapiResourses {
   }
   async getAllPeople() {
     const res = await this.getResourses(`people`)
-    return this.results.map(this._transformPerson(res));
+    return res.results.map(this._transformPerson);
   }
   async getPlanet(id) {
     const res = await this.getResourses(`planets/${id}/`)
@@ -20,7 +20,7 @@ class SwapiResourses {
   }
   async getAllPlanets() {
     const res = await this.getResourses(`planets`)
-    return res.results.map(this._transformPlanet(res));;
+    return res.results.map(this._transformPlanet);;
   }
   async getStarship(id) {
     const res = await this.getResourses(`starships/${id}/`)
@@ -28,7 +28,7 @@ class SwapiResourses {
   }
   async getAllStarships() {
     const res = await this.getResourses(`starships`)
-    return res.results.map(this._transformStarship(res));;
+    return res.results.map(this._transformStarship);;
   }
 
   _extractId(item) {
@@ -36,7 +36,7 @@ class SwapiResourses {
     return item.url.match(idRegExp)[1];
   }
 
-  _transformPlanet(planet) {
+  _transformPlanet = (planet) => {
     return {
       id: this._extractId(planet),
       name: planet.name,
@@ -45,26 +45,26 @@ class SwapiResourses {
       diameter: planet.diameter
     }
   }
-  _transformStarship(starship) {
+  _transformStarship = (starship) => {
     return {
       id: this._extractId(starship),
       name: starship.name,
       model: starship.model,
       manufacturer: starship.manufacturer,
-      costInCredits: starship.costInCredits,
+      costInCredits: starship.cost_in_credits,
       length: starship.length,
       crew: starship.crew,
       passengers: starship.passengers,
-      cargoCapacity: starship.cargoCapacity
+      cargoCapacity: starship.cargo_Capacity
     }
   }
-  _transformPerson(person) {
+  _transformPerson = (person) => {
     return {
       id: this._extractId(person),
       name: person.name,
       gender: person.gender,
-      birthYear: person.birthYear,
-      eyeColor: person.eyeColor
+      birthYear: person.birth_year,
+      eyeColor: person.eye_color
     }
   }
 }
