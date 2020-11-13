@@ -8,7 +8,7 @@ export const RandomPlanet = () => {
   const [planet, setPlanet] = useState([])
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false)
-  const id = Math.floor(Math.random() * 20) + 2;
+  const id = Math.floor(Math.random() * 20) + 3;
   const onError = () => {
     setError(true);
     setLoading(false);
@@ -21,9 +21,10 @@ export const RandomPlanet = () => {
       .catch(onError)
   }
   useEffect(() => {
-    updatePlanet()
+    return setInterval(() => {
+      updatePlanet()
+    }, 5000);
   }, [])
-
   const hasData = !(loading || error)
   const errorBlock = error ? <ErrorPage /> : null
   const loadingBlock = loading ? <Loading /> : null
@@ -40,13 +41,13 @@ export const RandomPlanet = () => {
 
 const Loading = () => {
   return (
-    <img src={loadingImg}></img>
+    <img src={loadingImg} alt='loading'></img>
   )
 }
 const Content = ({ planet, id }) => {
   return (
     <>
-      <img className='planet-image' src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} />
+      <img className='planet-image' src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} alt='planet-pic' />
       <div>
         <h4>
           {planet.name}
