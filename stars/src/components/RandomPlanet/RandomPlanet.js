@@ -5,21 +5,24 @@ import loadingImg from './../../assets/loading.svg'
 import { ErrorPage } from '../ErrorPage/ErrorPage';
 
 export const RandomPlanet = () => {
-  const [planet, setPlanet] = useState([])
+  const [planet, setPlanet] = useState([]);
+  const [idPlanet, setIdPlanet] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false)
-  const id = Math.floor(Math.random() * 20) + 3;
-  const onError = () => {
-    setError(true);
-    setLoading(false);
-  }
-  const updatePlanet = () => {
+  const [error, setError] = useState(false);
+  let updatePlanet = () => {
+    let id = Math.floor(Math.random() * 20) + 3;
     swapi.getPlanet(id).then((res) => {
+      setIdPlanet(id);
       setPlanet(res)
       setLoading(false)
     })
       .catch(onError)
   }
+  const onError = () => {
+    setError(true);
+    setLoading(false);
+  }
+
   useEffect(() => {
     return setInterval(() => {
       updatePlanet()
@@ -28,7 +31,7 @@ export const RandomPlanet = () => {
   const hasData = !(loading || error)
   const errorBlock = error ? <ErrorPage /> : null
   const loadingBlock = loading ? <Loading /> : null
-  const content = hasData ? <Content planet={planet} id={id}/> : null
+  const content = hasData ? <Content planet={planet} id={idPlanet}/> : null
 
   return (
     <div className={hasData ? 'random-planet jumptron rounded' : 'random-planet jumptron rounded center'}>
