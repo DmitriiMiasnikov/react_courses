@@ -7,13 +7,12 @@ export const PersonDetails = ({ selectedPerson }) => {
   const updatePerson = () => {
     if (!selectedPerson) return
     swapi.getPerson(selectedPerson).then((res) => {
-      console.log(res);
       setPerson(res)
     })
   }
   useEffect(() => {
     updatePerson()
-  }, [])
+  }, [selectedPerson])
 
   if (!person) {
     return (
@@ -31,15 +30,15 @@ export const PersonDetails = ({ selectedPerson }) => {
         <ul className='list-group list-group-flush'>
           <li className='list-group-item'>
             <span className='term'>Gender</span>
-            <spam>{person.gender}</spam>
+            <span>{person.gender}</span>
           </li>
           <li className='list-group-item'>
             <span className='term'>Birth Year</span>
-            <spam>{person.birthYear}</spam>
+            <span>{person.birthYear}</span>
           </li>
           <li className='list-group-item'>
             <span className='term'>Eye Color</span>
-            <spam>{person.eyeColor}</spam>
+            <span>{person.eyeColor}</span>
           </li>
         </ul>
       </div>
