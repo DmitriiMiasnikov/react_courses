@@ -5,6 +5,12 @@
   border: 1px solid #444;
 }
 
+.center {
+  justify-content: center;
+  align-items: center;
+  height: 290px;
+}
+
 .person-details .person-image {
   width: 30%;
   height: 30%;
@@ -12,11 +18,11 @@
 }
 
 .person-details .list-group-item {
-  padding: .25rem;
+  padding: 0.25rem;
 }
 
-.person-details .list-group-item .term{
-  margin-right: .5rem;
+.person-details .list-group-item .term {
+  margin-right: 0.5rem;
 }
 
 .person-details button {
