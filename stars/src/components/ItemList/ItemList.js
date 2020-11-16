@@ -14,7 +14,7 @@ export const ItemList = ({ onPersonSelected, itemList, loading }) => {
     setList(itemList)
   }, [itemList])
   const loadingBlock = loading ? <Loading /> : null;
-  const content = !loading ? <Content list={list} onPersonSelected={onPersonSelected}/> : null;
+  const content = !loading ? <Content list={list} onPersonSelected={onPersonSelected} /> : null;
   return (
     <div>
       <ul className='item-list list-group'>

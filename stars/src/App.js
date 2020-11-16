@@ -18,7 +18,7 @@ const states = {
 
 
 function App() {
-  const [selectedItem,setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
   const [list, setList] = useState(states.itemList);
   const [loading, setLoading] = useState(true);
   const onPersonSelected = (id) => {
@@ -26,7 +26,7 @@ function App() {
   }
   const headerHandler = (list = 'People') => {
     setLoading(true)
-    switch(list) {
+    switch (list) {
       case 'People': {
         swapi.getAllPeople().then((res) => {
           setLoading(false)
@@ -56,14 +56,14 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <Header headerItems={states.headerItems} headerHandler={headerHandler}/>
+      <Header headerItems={states.headerItems} headerHandler={headerHandler} />
       <RandomPlanet />
       <div className='row md2'>
         <div className='col-md-6'>
-          <ItemList itemList={list} onPersonSelected={onPersonSelected} loading={loading}/>
+          <ItemList itemList={list} onPersonSelected={onPersonSelected} loading={loading} />
         </div>
         <div className='col-md-6'>
-          <PersonDetails selectedItem={selectedItem}/>
+          <PersonDetails selectedItem={selectedItem} />
         </div>
       </div>
     </div>
