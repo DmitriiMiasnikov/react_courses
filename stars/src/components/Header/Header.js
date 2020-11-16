@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 
-export const Header = ({ headerItems }) => {
+export const Header = ({ headerItems, headerHandler }) => {
   return (
     <div className='header d-flex'>
       <h3>
@@ -12,7 +12,7 @@ export const Header = ({ headerItems }) => {
       <ul className='d-flex'>
         {
           headerItems.map((el, i) => {
-            return <li key={i}><a href='#'>{el}</a></li>
+            return <li key={i} onClick={() => headerHandler(el)}>{el}</li>
           })
         }
       </ul>

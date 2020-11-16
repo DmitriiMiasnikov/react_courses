@@ -3,7 +3,8 @@ import { Header } from './components/Header/Header';
 import { ItemList } from './components/ItemList/ItemList';
 import { PersonDetails } from './components/PersonDetails/PersonDetails';
 import { RandomPlanet } from './components/RandomPlanet/RandomPlanet';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { swapi } from './Servises/swapiServises'
 
 
 const states = {
@@ -12,24 +13,57 @@ const states = {
     'Planets',
     'Starships'
   ],
+  itemList: []
 }
 
 
 function App() {
-  const [selectedPerson,setSelectedPerson] = useState(null);
+  const [selectedItem,setSelectedItem] = useState(null);
+  const [list, setList] = useState(states.itemList);
+  const [loading, setLoading] = useState(true);
   const onPersonSelected = (id) => {
-    setSelectedPerson(id);
+    setSelectedItem(id);
   }
+  const headerHandler = (list = 'People') => {
+    setLoading(true)
+    switch(list) {
+      case 'People': {
+        swapi.getAllPeople().then((res) => {
+          setLoading(false)
+          setList(res)
+        })
+        break
+      }
+      case 'Planets': {
+        swapi.getAllPlanets().then((res) => {
+          setLoading(false)
+          setList(res)
+        })
+        break
+      }
+      case 'Starships': {
+        swapi.getAllStarships().then((res) => {
+          setLoading(false)
+          setList(res)
+        })
+        break
+      }
+      default: break
+    }
+  }
+  useEffect(() => {
+    headerHandler()
+  }, [])
   return (
     <div className="App">
-      <Header headerItems={states.headerItems}/>
+      <Header headerItems={states.headerItems} headerHandler={headerHandler}/>
       <RandomPlanet />
       <div className='row md2'>
         <div className='col-md-6'>
-          <ItemList itemList={states.itemList} onPersonSelected={onPersonSelected}/>
+          <ItemList itemList={list} onPersonSelected={onPersonSelected} loading={loading}/>
         </div>
         <div className='col-md-6'>
-          <PersonDetails selectedPerson={selectedPerson}/>
+          <PersonDetails selectedItem={selectedItem}/>
         </div>
       </div>
     </div>

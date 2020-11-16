@@ -12,6 +12,7 @@
 
 .header ul li:hover {
   background-color: #444;
+  cursor: pointer;
 }
 
 .header a:hover {

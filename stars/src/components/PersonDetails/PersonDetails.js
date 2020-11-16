@@ -3,12 +3,12 @@ import './PersonDetails.css';
 import { swapi } from './../../Servises/swapiServises';
 import { Loading } from './../../assets/Loading/Loading'
 
-export const PersonDetails = ({ selectedPerson }) => {
+export const PersonDetails = ({ selectedItem }) => {
   const [person, setPerson] = useState(null);
   const [loading, setLoading] = useState(true);
   const updatePerson = () => {
-    if (!selectedPerson) return
-    swapi.getPerson(selectedPerson).then((res) => {
+    if (!selectedItem) return
+    swapi.getPerson(selectedItem).then((res) => {
       setPerson(res)
       setLoading(false)
     })
@@ -16,7 +16,7 @@ export const PersonDetails = ({ selectedPerson }) => {
   useEffect(() => {
     setLoading(true)
     updatePerson()
-  }, [selectedPerson])
+  }, [selectedItem])
 
   const noDetails = !person ? <NoDetails /> : null;
   const loadingBlock = loading && !noDetails ? <Loading /> : null;

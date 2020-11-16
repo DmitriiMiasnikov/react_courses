@@ -3,28 +3,31 @@ import './ItemList.css';
 import { Loading } from './../../assets/Loading/Loading';
 import { swapi } from './../../Servises/swapiServises';
 
-export const ItemList = ({ onPersonSelected }) => {
-  const [peopleList, setPeopleList] = useState(null);
+export const ItemList = ({ onPersonSelected, itemList, loading }) => {
+  const [list, setList] = useState(null);
   useEffect(() => {
     swapi.getAllPeople().then((res) => {
-      setPeopleList(res)
+      setList(res)
     })
   }, [])
-  const loading = !peopleList ? <Loading /> : null;
-  const content = peopleList ? <Content peopleList={peopleList} onPersonSelected={onPersonSelected}/> : null;
+  useEffect(() => {
+    setList(itemList)
+  }, [itemList])
+  const loadingBlock = loading ? <Loading /> : null;
+  const content = !loading ? <Content list={list} onPersonSelected={onPersonSelected}/> : null;
   return (
     <div>
       <ul className='item-list list-group'>
-        {loading}
+        {loadingBlock}
         {content}
       </ul>
     </div>
   )
 }
 
-const Content = ({ peopleList, onPersonSelected }) => {
+const Content = ({ list, onPersonSelected }) => {
   return (
-    peopleList.map((el, i) => {
+    list.map((el, i) => {
       return <li key={i} className='list-group-item' onClick={() => onPersonSelected(el.id)}><a href='#'>{el.name}</a></li>
     })
   )

@@ -1,37 +1,37 @@
 class SwapiResourses {
   _apiBase = 'https://swapi.dev/api/'
-  async getResourses(url) {
+  getResourses = async (url) => {
     const res = await fetch(`${this._apiBase}${url}`);
     if (!res.ok) throw Error(`Couldnt fetch ${url}`)
     const body = await res.json();
     return body;
   }
-  async getPerson(id) {
+  getPerson = async (id) => {
     const res = await this.getResourses(`people/${id}/`)
     return this._transformPerson(res)
   }
-  async getAllPeople() {
+  getAllPeople = async () => {
     const res = await this.getResourses(`people`)
     return res.results.map(this._transformPerson);
   }
-  async getPlanet(id) {
+  getPlanet = async (id) => {
     const res = await this.getResourses(`planets/${id}/`)
     return this._transformPlanet(res)
   }
-  async getAllPlanets() {
+  getAllPlanets = async () => {
     const res = await this.getResourses(`planets`)
     return res.results.map(this._transformPlanet);;
   }
-  async getStarship(id) {
+  getStarship = async (id) => {
     const res = await this.getResourses(`starships/${id}/`)
     return this._transformStarship(res)
   }
-  async getAllStarships() {
+  getAllStarships = async () => {
     const res = await this.getResourses(`starships`)
     return res.results.map(this._transformStarship);;
   }
 
-  _extractId(item) {
+  _extractId = (item) => {
     const idRegExp = /\/([0-9]*)\/$/;
     return item.url.match(idRegExp)[1];
   }
