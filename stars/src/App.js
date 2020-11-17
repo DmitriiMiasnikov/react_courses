@@ -60,7 +60,10 @@ function App() {
       <RandomPlanet />
       <div className='row md2'>
         <div className='col-md-6'>
-          <ItemList itemList={list} onPersonSelected={onPersonSelected} loading={loading} />
+          <ItemList itemList={list} onPersonSelected={onPersonSelected} loading={loading} 
+            getData={swapi.getAllPlanets} renderItem={(item) => `${item.name} (${item.population})`}/>
+          <ItemList itemList={list} onPersonSelected={onPersonSelected} loading={loading} 
+            getData={swapi.getAllPeople} renderItem={(item) => `${item.name} (${item.gender}, ${item.birthYear})`}/>
         </div>
         <div className='col-md-6'>
           <PersonDetails selectedItem={selectedItem} />
