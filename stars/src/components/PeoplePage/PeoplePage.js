@@ -7,9 +7,9 @@ import { swapi } from './../../Servises/swapiServises';
 import { Row } from './../Row/Row'
 
 export const PeoplePage = () => {
-  const [selectedPerson, setSelectedPerson] = useState(3)
+  const [selectedPerson, setSelectedPerson] = useState(null)
   const onPersonSelected = (selectedPerson) => {
-    setSelectedPerson({ selectedPerson })
+    setSelectedPerson(selectedPerson)
   }
   const itemList = (
     <ItemList getData={swapi.getAllPeople} onPersonSelected={onPersonSelected} 
@@ -17,7 +17,7 @@ export const PeoplePage = () => {
   )
   const personDetails = (
     <ErrorBoundry>
-      <PersonDetails personId={selectedPerson} />
+      <PersonDetails selectedItem={selectedPerson} />
     </ErrorBoundry>
   )
   return (

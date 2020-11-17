@@ -12,7 +12,7 @@ export const Header = ({ headerItems, headerHandler }) => {
       <ul className='d-flex'>
         {
           headerItems.map((el, i) => {
-            return <li key={i} onClick={() => headerHandler(el)}>{el}</li>
+            return <li key={i}>{el}</li>
           })
         }
       </ul>

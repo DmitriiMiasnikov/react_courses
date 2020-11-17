@@ -1,8 +1,7 @@
 import './App.css';
 import { Header } from './components/Header/Header';
 import { RandomPlanet } from './components/RandomPlanet/RandomPlanet';
-import React, { useEffect, useState } from 'react';
-import { swapi } from './Servises/swapiServises';
+import React from 'react';
 import ErrorBoundry from './assets/ErrorPage/ErrorPage';
 import { PeoplePage } from './components/PeoplePage/PeoplePage'
 
