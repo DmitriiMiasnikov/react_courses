@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './ItemList.css';
 import { Loading } from './../../assets/Loading/Loading';
-// import { swapi } from './../../Servises/swapiServises';
 
-export const ItemList = ({ onPersonSelected, itemList, loading, getData, renderItem }) => {
-  const [list, setList] = useState(null);
-  // useEffect(() => {
-  //   swapi.getAllPeople().then((res) => {
-  //     setList(res)
-  //   })
-  // }, [])
-  // useEffect(() => {
-  //   setList(itemList)
-  // }, [itemList])
+export const ItemList = ({ onPersonSelected, getData, renderItem }) => {
+  const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getData().then((itemList) => {
       setList(itemList)
+      setLoading(false)
     })
   }, [])
 

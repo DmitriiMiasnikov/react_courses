@@ -1,10 +1,10 @@
 import './App.css';
 import { Header } from './components/Header/Header';
-import { ItemList } from './components/ItemList/ItemList';
-import { PersonDetails } from './components/PersonDetails/PersonDetails';
 import { RandomPlanet } from './components/RandomPlanet/RandomPlanet';
 import React, { useEffect, useState } from 'react';
-import { swapi } from './Servises/swapiServises'
+import { swapi } from './Servises/swapiServises';
+import ErrorBoundry from './assets/ErrorPage/ErrorPage';
+import { PeoplePage } from './components/PeoplePage/PeoplePage'
 
 
 const states = {
@@ -18,58 +18,15 @@ const states = {
 
 
 function App() {
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [list, setList] = useState(states.itemList);
-  const [loading, setLoading] = useState(true);
-  const onPersonSelected = (id) => {
-    setSelectedItem(id);
-  }
-  const headerHandler = (list = 'People') => {
-    setLoading(true)
-    switch (list) {
-      case 'People': {
-        swapi.getAllPeople().then((res) => {
-          setLoading(false)
-          setList(res)
-        })
-        break
-      }
-      case 'Planets': {
-        swapi.getAllPlanets().then((res) => {
-          setLoading(false)
-          setList(res)
-        })
-        break
-      }
-      case 'Starships': {
-        swapi.getAllStarships().then((res) => {
-          setLoading(false)
-          setList(res)
-        })
-        break
-      }
-      default: break
-    }
-  }
-  useEffect(() => {
-    headerHandler()
-  }, [])
   return (
+    <ErrorBoundry>
     <div className="App">
-      <Header headerItems={states.headerItems} headerHandler={headerHandler} />
+      <Header headerItems={states.headerItems} />
       <RandomPlanet />
-      <div className='row md2'>
-        <div className='col-md-6'>
-          <ItemList itemList={list} onPersonSelected={onPersonSelected} loading={loading} 
-            getData={swapi.getAllPlanets} renderItem={(item) => `${item.name} (${item.population})`}/>
-          <ItemList itemList={list} onPersonSelected={onPersonSelected} loading={loading} 
-            getData={swapi.getAllPeople} renderItem={(item) => `${item.name} (${item.gender}, ${item.birthYear})`}/>
-        </div>
-        <div className='col-md-6'>
-          <PersonDetails selectedItem={selectedItem} />
-        </div>
-      </div>
+      <PeoplePage />
     </div>
+    </ErrorBoundry>
+
   );
 }
 
