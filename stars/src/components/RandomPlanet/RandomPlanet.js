@@ -3,7 +3,6 @@ import './RandomPlanet.css';
 import { swapi } from './../../Servises/swapiServises'
 import { Loading } from './../../assets/Loading/Loading'
 import { Content } from './Content/Content'
-import ErrorBoundry from '../../assets/ErrorPage/ErrorPage';
 
 export const RandomPlanet = () => {
   const [planet, setPlanet] = useState([]);
@@ -29,11 +28,9 @@ export const RandomPlanet = () => {
   const content = hasData ? <Content planet={planet} id={idPlanet}/> : null
 
   return (
-    <ErrorBoundry>
     <div className={hasData ? 'random-planet jumptron rounded' : 'random-planet jumptron rounded center'}>
       {loadingBlock}
       {content}
     </div>
-    </ErrorBoundry>
   )
 }
