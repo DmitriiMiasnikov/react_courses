@@ -17,8 +17,8 @@ export default class ErrorBoundry extends Component {
 
     if (this.state.hasError) {
       return <div className='wrapper'>
-        <span className='title'>Something goes wrong</span>
-        <span className='subtitle'>We will fix thix soon!</span>
+        <div className='title'>Something goes wrong</div>
+        <div className='subtitle'>We will fix thix soon!</div>
       </div>
     }
 

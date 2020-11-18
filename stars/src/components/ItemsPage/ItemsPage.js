@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { PersonDetails } from '../PersonDetails/PersonDetails';
+import { ItemDetails } from '../ItemDetails/ItemDetails';
 import './ItemsPage.css';
 import { ItemList } from '../ItemList/ItemList';
 import { Row } from '../Row/Row'
 
-export const ItemsPage = ({ getData }) => {
+export const ItemsPage = ({ getData, type }) => {
   const [selectedPerson, setSelectedPerson] = useState(null)
   const onPersonSelected = (selectedPerson) => {
     setSelectedPerson(selectedPerson)
@@ -14,10 +14,10 @@ export const ItemsPage = ({ getData }) => {
         {(item) => `${item.name} (${item.gender}, ${item.birthYear})`}
       </ItemList>
   )
-  const personDetails = (
-      <PersonDetails selectedItem={selectedPerson} getData={getData}/>
+  const itemDetails = (
+      <ItemDetails selectedItem={selectedPerson} getData={getData}/>
   )
   return (
-    <Row left={itemList} right={personDetails} />
+    <Row left={itemList} right={itemDetails} />
   )
 }
