@@ -12,8 +12,9 @@ export const PeoplePage = () => {
     setSelectedPerson(selectedPerson)
   }
   const itemList = (
-    <ItemList getData={swapi.getAllPeople} onPersonSelected={onPersonSelected} 
-      renderItem={(item) => `${item.name} (${item.gender}, ${item.birthYear})`} />
+    <ItemList getData={swapi.getAllPeople} onPersonSelected={onPersonSelected} >
+        {(item) => `${item.name} (${item.gender}, ${item.birthYear})`}
+      </ItemList>
   )
   const personDetails = (
     <ErrorBoundry>

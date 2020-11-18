@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ItemList.css';
 import { Loading } from './../../assets/Loading/Loading';
 
-export const ItemList = ({ onPersonSelected, getData, renderItem }) => {
+export const ItemList = ({ onPersonSelected, getData, children }) => {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,7 +14,7 @@ export const ItemList = ({ onPersonSelected, getData, renderItem }) => {
   }, [])
 
   const loadingBlock = loading ? <Loading /> : null;
-  const content = !loading ? <Content list={list} onPersonSelected={onPersonSelected} renderItem={renderItem}/> : null;
+  const content = !loading ? <Content list={list} onPersonSelected={onPersonSelected} itemText={children}/> : null;
   return (
     <div>
       <ul className='item-list list-group'>
@@ -25,10 +25,10 @@ export const ItemList = ({ onPersonSelected, getData, renderItem }) => {
   )
 }
 
-const Content = ({ list, onPersonSelected, renderItem }) => {
+const Content = ({ list, onPersonSelected, itemText }) => {
   return (
     list.map((el, i) => {
-      const label = renderItem(el)
+      const label = itemText(el)
       return <li key={i} className='list-group-item' onClick={() => onPersonSelected(el.id)}><a href='#'>{label}</a></li>
     })
   )
