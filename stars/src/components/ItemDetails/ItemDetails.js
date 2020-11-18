@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './ItemDetails.css';
-import { Loading } from '../../assets/Loading/Loading'
+import { Loading } from '../../assets/Loading/Loading';
 
-export const ItemDetails = ({ selectedItem, getData }) => {
+export const ItemDetails = ({ selectedItem, getData, children }) => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const updateItem = () => {
@@ -19,7 +19,7 @@ export const ItemDetails = ({ selectedItem, getData }) => {
 
   const noDetails = !item ? <NoDetails /> : null;
   const loadingBlock = loading && !noDetails ? <Loading /> : null;
-  const content = item && !loading ? <Content item={item} imageURL={getData.imageURL}/> : null;
+  const content = item && !loading ? <Content item={item} imageURL={getData.imageURL} children={children} /> : null;
   return (
     <div className={noDetails || loadingBlock ? 'item-details card center' : 'item-details card'}>
       {loadingBlock}
@@ -33,7 +33,7 @@ const NoDetails = () => {
     <div>selsect a item from the list</div>
   )
 }
-const Content = ({ item, imageURL }) => {
+const Content = ({ item, imageURL, children }) => {
   return (
     <>
       <img className='item-image' alt={imageURL}
@@ -43,20 +43,17 @@ const Content = ({ item, imageURL }) => {
           {item.name}
         </h4>
         <ul className='list-group list-group-flush'>
-          <li className='list-group-item'>
-            <span className='term'>Gender</span>
-            <span>{item.gender}</span>
-          </li>
-          <li className='list-group-item'>
-            <span className='term'>Birth Year</span>
-            <span>{item.birthYear}</span>
-          </li>
-          <li className='list-group-item'>
-            <span className='term'>Eye Color</span>
-            <span>{item.eyeColor}</span>
-          </li>
+          {children}
         </ul>
       </div>
     </>
+  )
+}
+export const Record = ({ field, label }) => {
+  return (
+    <li className='list-group-item'>
+      <span className='term'>{label}:</span>
+      <span>{field}</span>
+    </li>
   )
 }
