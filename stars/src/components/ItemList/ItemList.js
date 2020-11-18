@@ -7,7 +7,7 @@ export const ItemList = ({ onPersonSelected, getData, children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getData().then((itemList) => {
+    getData.listItem().then((itemList) => {
       setList(itemList)
       setLoading(false)
     })
