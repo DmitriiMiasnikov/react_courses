@@ -43,7 +43,11 @@ const Content = ({ item, imageURL, children }) => {
           {item.name}
         </h4>
         <ul className='list-group list-group-flush'>
-          {children}
+          {
+            React.Children.map(children, (child, i) => {
+              return React.cloneElement(child)
+            })
+          }
         </ul>
       </div>
     </>
