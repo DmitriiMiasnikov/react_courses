@@ -5,21 +5,10 @@ import { ItemList } from '../ItemList/ItemList';
 import { Row } from '../Row/Row';
 import { Record } from './../ItemDetails/ItemDetails'
 
-export const ItemsPage = ({ getData, type }) => {
+export const ItemsPage = ({ getData }) => {
   const [selectedPerson, setSelectedPerson] = useState(null)
   const onPersonSelected = (selectedPerson) => {
     setSelectedPerson(selectedPerson)
-  }
-  let itemListDetails;
-  switch(type) {
-    case 'people': {
-      itemListDetails = {
-        fields: ['gender', 'eyeColor', 'birthYear'],
-        labels: ['Gender', 'Eye Color', 'birth Year']
-      }
-      break
-    }
-    default: break
   }
   const itemList = (
     <ItemList getData={getData} onPersonSelected={onPersonSelected} >

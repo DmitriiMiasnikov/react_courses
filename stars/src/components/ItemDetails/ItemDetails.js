@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './ItemDetails.css';
 import { Loading } from '../../assets/Loading/Loading';
 
-export const ItemDetails = ({ selectedItem, getData, children }) => {
+export const ItemDetails = ({ itemId, getData, imageURL, children }) => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const updateItem = () => {
-    if (!selectedItem) return
-    getData.item(selectedItem).then((res) => {
+    if (!itemId) return
+    getData(itemId).then((res) => {
       setItem(res)
       setLoading(false)
     })
@@ -15,11 +15,11 @@ export const ItemDetails = ({ selectedItem, getData, children }) => {
   useEffect(() => {
     setLoading(true)
     updateItem()
-  }, [selectedItem])
+  }, [itemId])
 
   const noDetails = !item ? <NoDetails /> : null;
   const loadingBlock = loading && !noDetails ? <Loading /> : null;
-  const content = item && !loading ? <Content item={item} imageURL={getData.imageURL} children={children} /> : null;
+  const content = item && !loading ? <Content item={item} imageURL={imageURL} children={children} /> : null;
   return (
     <div className={noDetails || loadingBlock ? 'item-details card center' : 'item-details card'}>
       {loadingBlock}
