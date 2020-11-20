@@ -45,7 +45,7 @@ const Content = ({ item, imageURL, children }) => {
         <ul className='list-group list-group-flush'>
           {
             React.Children.map(children, (child, i) => {
-              return React.cloneElement(child)
+              return React.cloneElement(child, { item })
             })
           }
         </ul>
@@ -53,11 +53,11 @@ const Content = ({ item, imageURL, children }) => {
     </>
   )
 }
-export const Record = ({ field, label }) => {
+export const Record = ({ item, field, label }) => {
   return (
     <li className='list-group-item'>
       <span className='term'>{label}:</span>
-      <span>{field}</span>
+      <span>{item [field]}</span>
     </li>
   )
 }
