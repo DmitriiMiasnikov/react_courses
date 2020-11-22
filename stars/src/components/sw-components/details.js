@@ -8,10 +8,10 @@ const {
   getStarship,
 } = swapi;
 
-const PersonDetails = () => {
+const PersonDetails = ({ itemId }) => {
   return (
     <ItemDetails
-      getData={getPerson}
+      getData={getPerson} itemId={itemId}
       imageURL='characters' >
 
       <Record field="gender" label="Gender" />
@@ -20,10 +20,10 @@ const PersonDetails = () => {
   );
 };
 
-const PlanetDetails = () => {
+const PlanetDetails = ({ itemId }) => {
   return (
     <ItemDetails
-      getData={getPlanet}
+      getData={getPlanet} itemId={itemId}
       imageURL='planets' >
 
       <Record field="population" label="Population" />
@@ -33,10 +33,10 @@ const PlanetDetails = () => {
   );
 };
 
-const StarshipDetails = () => {
+const StarshipDetails = ({ itemId }) => {
   return (
     <ItemDetails
-      getData={getStarship}
+      getData={getStarship} itemId={itemId}
       imageURL='starship' >
 
       <Record field="model" label="Model" />

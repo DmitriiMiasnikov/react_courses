@@ -4,21 +4,20 @@ import { Loading } from '../../assets/Loading/Loading';
 
 export const ItemDetails = ({ itemId, getData, imageURL, children }) => {
   const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const updateItem = () => {
     if (!itemId) return
+    setLoading(true);
     getData(itemId).then((res) => {
       setItem(res)
       setLoading(false)
     })
   }
   useEffect(() => {
-    setLoading(true)
     updateItem()
   }, [itemId])
-
-  const noDetails = !item ? <NoDetails /> : null;
-  const loadingBlock = loading && !noDetails ? <Loading /> : null;
+  const noDetails = !item && !loading ? <NoDetails /> : null;
+  const loadingBlock = loading ? <Loading /> : null;
   const content = item && !loading ? <Content item={item} imageURL={imageURL} children={children} /> : null;
   return (
     <div className={noDetails || loadingBlock ? 'item-details card center' : 'item-details card'}>
