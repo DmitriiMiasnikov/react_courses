@@ -23,19 +23,9 @@ function App() {
       <div className="App">
         <Header headerItems={states.headerItems} />
         <RandomPlanet />
-
         <Row left={<PersonList />} right={<PersonDetails />} />
         <Row left={<PlanetList />} right={<PlanetDetails />} />
         <Row left={<StarshipList />} right={<StarshipDetails />} />
-        {/* <PersonDetails />
-        <PlanetDetails />
-        <StarshipDetails />
-        <PersonList />
-        <StarshipList />
-        <PlanetList /> */}
-        {/* <ItemsPage type='people' getData={{ listItem: swapi.getAllPeople, item: swapi.getPerson, imageURL: 'characters' }} />
-        <ItemsPage type='planet' getData={{ listItem: swapi.getAllPlanets, item: swapi.getPlanet, imageURL: 'planets' }} />
-        <ItemsPage type='starship' getData={{ listItem: swapi.getAllStarships, item: swapi.getStarship, imageURL: 'starship' }} /> */}
       </div>
     </ErrorBoundry>
 

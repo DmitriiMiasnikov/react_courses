@@ -30,7 +30,7 @@ export const ItemDetails = ({ itemId, getData, imageURL, children }) => {
 }
 const NoDetails = () => {
   return (
-    <div>selsect a item from the list</div>
+    <div>select an item from the list</div>
   )
 }
 const Content = ({ item, imageURL, children }) => {
