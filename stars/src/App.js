@@ -4,7 +4,9 @@ import { RandomPlanet } from './components/RandomPlanet/RandomPlanet';
 import React, { useState } from 'react';
 import ErrorBoundry from './assets/ErrorPage/ErrorPage';
 import { Row } from './components/Row/Row'
-import { PersonDetails, PlanetDetails, StarshipDetails } from './components/sw-components/details';
+import PersonDetails from './components/sw-components/PersonDetails';
+import { PlanetDetails } from './components/sw-components/PlanetDetails';
+import { StarshipDetails } from './components/sw-components/StarshipDetails'
 import { PersonList, PlanetList, StarshipList } from './components/sw-components/item-lists'
 import { ItemsPage } from './components/ItemsPage/ItemsPage';
 import { SwapiServiceProvider } from './components/sw-context/sw-context'
