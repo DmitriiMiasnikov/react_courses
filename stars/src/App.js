@@ -10,6 +10,9 @@ import StarshipDetails from './components/sw-components/StarshipDetails'
 import { PersonList, PlanetList, StarshipList } from './components/sw-components/item-lists'
 import { SwapiServiceProvider } from './components/sw-context/sw-context'
 import { swapi } from './Servises/swapiServises';
+import { PeoplePage } from './components/pages/PeoplePage';
+import { StarshipsPage } from './components/pages/StarshipsPage';
+import { PlanetsPage } from './components/pages/PlanetsPage';
 
 const states = {
   headerItems: [
@@ -32,9 +35,12 @@ function App() {
       <div className="App">
         <Header headerItems={states.headerItems} />
         <RandomPlanet />
-        <Row left={<PersonList onItemSelected={onItemSelected} />} right={<PersonDetails itemId={itemId} />} />
+        <PeoplePage />
+        <PlanetsPage />
+        <StarshipsPage />
+        {/* <Row left={<PersonList onItemSelected={onItemSelected} />} right={<PersonDetails itemId={itemId} />} />
         <Row left={<PlanetList onItemSelected={onItemSelected} />} right={<PlanetDetails itemId={itemId} />} />
-        <Row left={<StarshipList onItemSelected={onItemSelected} />} right={<StarshipDetails itemId={itemId} />} />
+        <Row left={<StarshipList onItemSelected={onItemSelected} />} right={<StarshipDetails itemId={itemId} />} /> */}
       </div>
     </ErrorBoundry>
     </SwapiServiceProvider>
