@@ -6,7 +6,7 @@ const StarshipDetails = (props) => {
   return (
     <ItemDetails
       {...props}
-      imageURL='starship' >
+      imageURL='starships' >
 
       <Record field="model" label="Model" />
       <Record field="length" label="Length" />

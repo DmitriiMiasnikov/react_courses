@@ -2,7 +2,7 @@ class SwapiResourses {
   _apiBase = 'https://swapi.dev/api/'
   getResourses = async (url) => {
     const res = await fetch(`${this._apiBase}${url}`);
-    if (!res.ok) throw Error(`Couldnt fetch ${url}`)
+    if (!res.ok) throw Error(`Couldnt fetch ${this._apiBase}${url}`)
     const body = await res.json();
     return body;
   }

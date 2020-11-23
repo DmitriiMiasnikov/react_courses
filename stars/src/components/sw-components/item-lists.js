@@ -24,12 +24,12 @@ const mapPersonMethodsToProps = (swapi) => {
 }
 const mapPlanetMethodsToProps = (swapi) => {
   return {
-    getData: swapi.getAllPeople
+    getData: swapi.getAllPlanets
   }
 }
 const mapStarshipMethodsToProps = (swapi) => {
   return {
-    getData: swapi.getAllPeople
+    getData: swapi.getAllStarships
   }
 }
 

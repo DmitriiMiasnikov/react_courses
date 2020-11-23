@@ -5,10 +5,9 @@ import React, { useState } from 'react';
 import ErrorBoundry from './assets/ErrorPage/ErrorPage';
 import { Row } from './components/Row/Row'
 import PersonDetails from './components/sw-components/PersonDetails';
-import { PlanetDetails } from './components/sw-components/PlanetDetails';
-import { StarshipDetails } from './components/sw-components/StarshipDetails'
+import PlanetDetails from './components/sw-components/PlanetDetails';
+import StarshipDetails from './components/sw-components/StarshipDetails'
 import { PersonList, PlanetList, StarshipList } from './components/sw-components/item-lists'
-import { ItemsPage } from './components/ItemsPage/ItemsPage';
 import { SwapiServiceProvider } from './components/sw-context/sw-context'
 import { swapi } from './Servises/swapiServises';
 
@@ -33,10 +32,9 @@ function App() {
       <div className="App">
         <Header headerItems={states.headerItems} />
         <RandomPlanet />
-        <ItemsPage left={<PersonList onItemSelected={onItemSelected} />} right={<PersonDetails itemId={itemId} />} />
-        {/* <Row left={<PersonList />} right={<PersonDetails/>} />
-        <Row left={<PlanetList />} right={<PlanetDetails />} />
-        <Row left={<StarshipList/>} right={<StarshipDetails />} /> */}
+        <Row left={<PersonList onItemSelected={onItemSelected} />} right={<PersonDetails itemId={itemId} />} />
+        <Row left={<PlanetList onItemSelected={onItemSelected} />} right={<PlanetDetails itemId={itemId} />} />
+        <Row left={<StarshipList onItemSelected={onItemSelected} />} right={<StarshipDetails itemId={itemId} />} />
       </div>
     </ErrorBoundry>
     </SwapiServiceProvider>
