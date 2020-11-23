@@ -7,6 +7,8 @@ import { Row } from './components/Row/Row'
 import { PersonDetails, PlanetDetails, StarshipDetails } from './components/sw-components/details';
 import { PersonList, PlanetList, StarshipList } from './components/sw-components/item-lists'
 import { ItemsPage } from './components/ItemsPage/ItemsPage';
+import { SwapiServiceProvider } from './components/sw-context/sw-context'
+import { swapi } from './Servises/swapiServises';
 
 const states = {
   headerItems: [
@@ -24,6 +26,7 @@ function App() {
     setItemId(itemId)
   }
   return (
+    <SwapiServiceProvider value={swapi}>
     <ErrorBoundry>
       <div className="App">
         <Header headerItems={states.headerItems} />
@@ -34,7 +37,7 @@ function App() {
         <Row left={<StarshipList/>} right={<StarshipDetails />} /> */}
       </div>
     </ErrorBoundry>
-
+    </SwapiServiceProvider>
   );
 }
 
