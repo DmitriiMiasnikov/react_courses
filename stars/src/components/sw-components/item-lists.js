@@ -4,7 +4,7 @@ import { WithData } from './../hoc-helpers/WithData';
 import { WithSwapiService } from './../hoc-helpers/WithSwapiService'
 
 
-const withChildFunction = (Wrapped, fn) => {
+const withChildFunction = (fn) => (Wrapped) => {
   return (props) => {
     return (
       <Wrapped {...props}>
@@ -33,18 +33,18 @@ const mapStarshipMethodsToProps = (swapi) => {
   }
 }
 
-const PersonList = WithSwapiService(
-  WithData(withChildFunction(ItemList, renderName)),
-  mapPersonMethodsToProps
-)
-const PlanetList = WithSwapiService(
-  WithData(withChildFunction(ItemList, renderName)),
-  mapPlanetMethodsToProps
-)
-const StarshipList = WithSwapiService(
-  WithData(withChildFunction(ItemList, renderModelAndName)),
-  mapStarshipMethodsToProps
-)
+const PersonList = WithSwapiService(mapPersonMethodsToProps)(
+  WithData(
+    withChildFunction(renderName)(
+      ItemList)))
+const PlanetList = WithSwapiService(mapPlanetMethodsToProps)(
+  WithData(
+    withChildFunction(renderName)(
+      ItemList)))
+const StarshipList = WithSwapiService(mapStarshipMethodsToProps)(
+  WithData(
+    withChildFunction(renderModelAndName)(
+      ItemList)))
 
 export {
   PersonList,

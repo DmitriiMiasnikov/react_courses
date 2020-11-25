@@ -20,4 +20,4 @@ const mapMethodsToProps = (swapi) => {
     getData: swapi.getPlanet
   }
 }
-export default WithSwapiService(PlanetDetails, mapMethodsToProps)
+export default WithSwapiService(mapMethodsToProps)(PlanetDetails)
