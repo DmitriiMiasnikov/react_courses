@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { Context } from './../../App'
 
 export const Person = () => {
-  const [person, setPerson] = useState({
-    firstName: 'Bob',
-    lastName: 'Smith'
-  })
+  const value = useContext(Context);
+  const [person, setPerson] = useState(value.personName)
   const changeName = () => {
     setPerson(n => {
       return { ...n, firstName: n.firstName === 'Dmitrii' ? 'Bob' : 'Dmitrii' }
