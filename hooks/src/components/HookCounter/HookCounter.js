@@ -6,6 +6,12 @@ export const HookCounter = () => {
   useEffect(() => {
     console.log('useEffect');
   })
+  useEffect(() => {
+    console.log('useEffect []');
+  }, [])
+  useEffect(() => {
+    console.log('useEffect [count]');
+  }, [count])
 
   return (
     <div className='wrapper'>
@@ -13,6 +19,7 @@ export const HookCounter = () => {
         {count}
       </div>
       <button onClick={() => {setCount((e) => e + 1)}}>+1</button>
+      <button onClick={() => {setCount((e) => e - 1)}}>-1</button>
     </div>
   )
 }
