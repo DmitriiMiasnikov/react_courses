@@ -11,6 +11,7 @@ export const HookCounter = () => {
   }, [])
   useEffect(() => {
     console.log('useEffect [count]');
+    return () => console.log('unmount')
   }, [count])
 
   return (

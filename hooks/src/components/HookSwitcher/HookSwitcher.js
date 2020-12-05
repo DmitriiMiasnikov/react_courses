@@ -9,11 +9,11 @@ export const HookSwitcher = ({}) => {
   return (
     <div className='wrapper' 
       style={{ backgroundColor: color, fontSize: `${fontSize}px` }}>
-      <span className='text'>just a text</span>
       <button onClick={() => greySwitch()}>grey</button>
       <button onClick={() => blackSwitch()}>black</button>
       <button onClick={() => setFontSize((s) => s + 2)}>+</button>
       <button onClick={() => setFontSize((s) => s - 2)}>-</button>
+      <span style={{ color: color === 'grey' ? 'black' : 'grey' }} className='text'>just a text</span> 
     </div>
   )
 }
