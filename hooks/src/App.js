@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { HookCounter } from './components/HookCounter/HookCounter';
 import { HookSwitcher } from './components/HookSwitcher/HookSwitcher';
 import { Person } from './components/Person/Person';
 
@@ -16,6 +17,7 @@ function App() {
       <div className="App">
         <HookSwitcher />
         <Person />
+        <HookCounter />
       </div>
     </Context.Provider>
 
