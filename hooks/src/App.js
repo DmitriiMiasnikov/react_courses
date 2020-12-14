@@ -15,7 +15,6 @@ const state = {
 }
 function App() {
   const [visible, setVisible] = useState(true);
-  const [planetId, setPlanetId] = useState(3);
   return (
     <Context.Provider value={state}>
       <button onClick={() => setVisible((s) => !s)} className='button-clear'>clear scene</button>
@@ -24,7 +23,7 @@ function App() {
         <Person />
         <HookCounter />
         <Notification />
-        <PlanetInfo id={planetId}/>
+        <PlanetInfo />
       </div>}
     </Context.Provider>
 
