@@ -23,7 +23,7 @@ function App() {
         <Person />
         <HookCounter />
         <Notification />
-        <PlanetInfo />
+        <PlanetInfo id = {3}/>
       </div>}
     </Context.Provider>
 
