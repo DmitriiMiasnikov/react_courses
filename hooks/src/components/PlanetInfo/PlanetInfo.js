@@ -1,27 +1,37 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 
-const usePlanetInfo = (id) => {
-  const [name, setName] = useState(null);
+
+const getPlanet = (id) => {
+  return fetch(`https://swapi.dev/api/planets/${id}`)
+  .then(res => res.json())
+  .then(data => data)
+}
+
+const useRequest = (request) => {
+  const [dataState, setDataState] = useState(null);
   useEffect(() => {
     let cancelled = false;
-    fetch(`https://swapi.dev/api/planets/${id}`)
-      .then(res => res.json())
-      .then(data => !cancelled && setName(data.name))
+    request().then(data => !cancelled && setDataState(data))
     return () => cancelled = true;
-  }, [id])
-  return name;
+  }, [request])
+  return dataState;
+}
+
+const usePlanetInfo = (id) => {
+  const request = useCallback(() => getPlanet(id), [id])
+  return useRequest(request)
 }
 
 export const PlanetInfo = ({ id }) => {
   const [planetId, setPlanetId] = useState(id);
-  const name = usePlanetInfo(planetId);
+  const data = usePlanetInfo(planetId);
   return (
     <div>
       <div>
         <button onClick={() => setPlanetId((id) => id + 1)}>+</button>
         <button onClick={() => setPlanetId((id) => id - 1)}>-</button>
       </div>
-      {name ? `${planetId} - ${name}` : `${planetId} - no planet`} - planet name
+      {data ? `${planetId} - ${data.name}` : `${planetId} - no planet`} - planet name
     </div>
   )
 }
