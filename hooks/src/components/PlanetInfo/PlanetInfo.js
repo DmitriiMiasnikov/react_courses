@@ -4,9 +4,11 @@ export const PlanetInfo = () => {
   const [name, setName] = useState(null);
   const [planetId, setPlanetId] = useState(3);
   useEffect(() => {
+    let cancelled = false;
     fetch(`https://swapi.dev/api/planets/${planetId}`)
       .then(res => res.json())
-      .then(data => setName(data.name)) 
+      .then(data => !cancelled && setName(data.name))
+    return () => cancelled = true;
   }, [planetId])
   return (
     <div>
