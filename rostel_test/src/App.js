@@ -1,5 +1,6 @@
 import './App.css';
-import { Todos } from './components/Todos/Todos'
+import { Todos } from './components/Todos/Todos';
+import { ControlPanel } from './components/ControlPanel/ControlPanel';
 
 function App() {
   const getTodos = async () => {
@@ -10,6 +11,7 @@ function App() {
 
   return (
     <div className="App">
+      <ControlPanel />
       <Todos getTodos={getTodos}/>
     </div>
   );
