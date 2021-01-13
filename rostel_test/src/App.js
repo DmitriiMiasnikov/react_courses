@@ -1,6 +1,8 @@
 import './App.css';
+import { Redirect, Route } from 'react-router-dom';
 import { Todos } from './components/Todos/Todos';
 import { ControlPanel } from './components/ControlPanel/ControlPanel';
+import { Main } from './components/Main/Main';
 
 function App() {
   const getTodos = async () => {
@@ -17,7 +19,11 @@ function App() {
   return (
     <div className="App">
       <ControlPanel />
-      <Todos getTodos={getTodos} getUserInfo={getUserInfo}/>
+      <div className='content'>
+        <Redirect from='/' to='/main' />
+        <Route path='/main' render={() => <Main />} />
+        <Route path='/todos' render={() => <Todos getTodos={getTodos} getUserInfo={getUserInfo} />} />
+      </div>
     </div>
   );
 }
