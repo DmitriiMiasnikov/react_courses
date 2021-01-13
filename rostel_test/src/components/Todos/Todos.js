@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Todo } from './Todo/Todo'
+import './Todos.css';
+import { Todo } from './Todo/Todo';
 
 export const Todos = ({ getTodos }) => {
   const [todoList, setTodoList] = useState([]);
@@ -8,7 +9,7 @@ export const Todos = ({ getTodos }) => {
     setTodoList(todos);
   }, [])
   return (
-    <div>
+    <div className='todos'>
       {
         todoList.map((el, i) => {
           return (
