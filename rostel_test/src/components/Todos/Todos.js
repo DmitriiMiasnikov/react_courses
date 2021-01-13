@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Todo } from './Todo/Todo'
 
 export const Todos = ({ getTodos }) => {
   const [todoList, setTodoList] = useState([]);
@@ -11,9 +12,7 @@ export const Todos = ({ getTodos }) => {
       {
         todoList.map((el, i) => {
           return (
-            <div key={i}>
-              {el.id} - {el.title}
-            </div>
+            <Todo item={el} key={i}/>
           )
         })
       }

@@ -1,0 +1,11 @@
+.todo {
+  padding: 10px 0 10px 10px;
+  border-bottom: 1px solid rgb(150, 150, 150);
+}
+.number {
+  display: inline-block;
+  padding-right: 15px;
+}
+.text {
+  display: inline-block;
+}
