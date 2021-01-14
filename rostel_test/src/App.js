@@ -19,6 +19,11 @@ function App() {
     const posts = await res.json();
     return posts
   }
+  const getUsers = async () => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/users')
+    const users = await res.json();
+    return users
+  }
   const getUserInfo = async (id) => {
     const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
     const userName = await res.json();
@@ -35,8 +40,8 @@ function App() {
       <div className='content'>
         <Redirect from='/' to='/main' />
         <Route path='/main' render={() => <Main />} />
-        <Route path='/todos' render={() => <Todos getTodos={getTodos} getUserInfo={getUserInfo} setCurrentUser={setCurrentUser}/>} />
-        <Route path='/posts' render={() => <Posts getPosts={getPosts} getUserInfo={getUserInfo} setCurrentUser={setCurrentUser}/>} />
+        <Route path='/todos' render={() => <Todos getTodos={getTodos} setCurrentUser={setCurrentUser} getUsers={getUsers}/>} />
+        <Route path='/posts' render={() => <Posts getPosts={getPosts} setCurrentUser={setCurrentUser} getUsers={getUsers}/>} />
         <Route path={`/users/${userId}`} render={() => <User getUserInfo={getUserInfo} userId={userId}/>}/>
       </div>
     </div>

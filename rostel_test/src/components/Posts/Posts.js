@@ -3,18 +3,21 @@ import './Posts.css';
 import { Post } from './Post/Post';
 import { Loading } from '../Loading/Loading';
 
-export const Posts = ({ getPosts, getUserInfo, setCurrentUser }) => {
+export const Posts = ({ getPosts, setCurrentUser, getUsers }) => {
   const [postList, setPostList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [usersList, setUsersList] = useState([]);
   // const [sortedByCompleted, setSortedByCompleted] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
-      const posts = await getPosts()
+      const posts = await getPosts();
+      const users = await getUsers();
       setLoading(false);
+      setUsersList(users);
       setPostList(posts);
     }
     fetchData()
-  }, [getPosts])
+  }, [getPosts, getUsers])
   // const sortByCompleted = async () => {
   //   setLoading(true);
   //   const todos = await getPosts()
@@ -36,7 +39,7 @@ export const Posts = ({ getPosts, getUserInfo, setCurrentUser }) => {
       {
         !loading ? postList.map((el, i) => {
           return (
-            <Post item={el} key={i} getUserInfo={getUserInfo} setCurrentUser={setCurrentUser}/>
+            <Post item={el} key={i} setCurrentUser={setCurrentUser} usersList={usersList}/>
           )
         }) : <Loading />
       }

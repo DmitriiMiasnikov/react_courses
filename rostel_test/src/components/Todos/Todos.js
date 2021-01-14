@@ -4,18 +4,21 @@ import { Todo } from './Todo/Todo';
 import { Loading } from '../Loading/Loading';
 import { Search } from '../Search/Search';
 
-export const Todos = ({ getTodos, getUserInfo, setCurrentUser }) => {
+export const Todos = ({ getTodos, setCurrentUser, getUsers }) => {
   const [todoList, setTodoList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [usersList, setUsersList] = useState([]);
   const [sortedByCompleted, setSortedByCompleted] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
-      const todos = await getTodos()
+      const todos = await getTodos();
+      const users = await getUsers();
       setLoading(false);
+      setUsersList(users);
       setTodoList(todos);
     }
     fetchData()
-  }, [getTodos])
+  }, [getTodos, getUsers])
   const sortByCompleted = async () => {
     setLoading(true);
     const todos = await getTodos()
@@ -48,7 +51,7 @@ export const Todos = ({ getTodos, getUserInfo, setCurrentUser }) => {
       {
         !loading ? todoList.map((el, i) => {
           return (
-            <Todo item={el} key={i} getUserInfo={getUserInfo} setCurrentUser={setCurrentUser}/>
+            <Todo item={el} key={i} setCurrentUser={setCurrentUser} usersList={usersList}/>
           )
         }) : <Loading />
       }
