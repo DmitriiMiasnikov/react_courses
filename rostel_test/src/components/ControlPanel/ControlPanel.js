@@ -9,6 +9,7 @@ export const ControlPanel = () => {
       <Button name={'todos'} link={'/todos'} />
       <Button name={'posts'} link={'/posts'} />
       <Button name={'users'} link={'/users'} />
+      <Button name={'parse'} link={'/parse'} />
     </div>
   )
 }
