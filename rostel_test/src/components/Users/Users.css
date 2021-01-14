@@ -1,4 +1,4 @@
-.users > div {
+.users > div:not(:first-child) {
   padding: 10px 0 10px 10px;
   border-bottom: 1px solid rgb(150, 150, 150);
 }
@@ -8,4 +8,35 @@
 }
 .users > div > a:hover {
   color: rgb(112, 111, 111);
+}
+.sort-buttons-block {
+  position: relative;
+  margin-bottom: 3px;
+  border-bottom: 1px solid rgb(150, 150, 150);
+}
+.sort-button {
+  height: 30px;
+  padding: 0 15px 0 15px;
+  box-sizing: border-box;
+  background-color: rgb(167, 167, 167);
+  color: rgb(65, 65, 65);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: .2s background-color;
+}
+.sort-button:not(:first-child) {
+  border-left: 1px solid rgb(97, 97, 97);
+}
+.sort-button > span:first-child {
+  margin-right: 5px;
+}
+.sort-button:hover {
+  cursor: pointer;
+  background-color: rgb(151, 151, 151);
+}
+.search-panel {
+  position: absolute;
+  right: 4px;
+  top: 3px;
 }
