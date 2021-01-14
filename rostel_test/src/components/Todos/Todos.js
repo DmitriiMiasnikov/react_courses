@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Todos.css';
 import { Todo } from './Todo/Todo';
 import { Loading } from '../Loading/Loading';
+import { Search } from '../Search/Search';
 
 export const Todos = ({ getTodos, getUserInfo, setCurrentUser }) => {
   const [todoList, setTodoList] = useState([]);
@@ -26,11 +27,22 @@ export const Todos = ({ getTodos, getUserInfo, setCurrentUser }) => {
     }));
     setSortedByCompleted((item) => !item)
   }
+  const search = async (value) => {
+    if (value) {
+      setTodoList((item) => item.filter(el => el.title.includes(value)))
+    } else {
+      const todos = await getTodos()
+      setTodoList(todos);
+    }
+  }
   return (
     <div className='todos'>
       <div className='sort-buttons-block'>
         <div className='sort-button' onClick={() => sortByCompleted()}>
           <span>completed</span> {!sortedByCompleted ? <span>&#9660;</span> : <span>&#9650;</span>}
+        </div>
+        <div className='search-panel'>
+          <Search search={search}/>
         </div>
       </div>
       {

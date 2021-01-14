@@ -6,6 +6,7 @@
   height: 200px;
 }
 .sort-buttons-block {
+  position: relative;
   margin-bottom: 3px;
   border-bottom: 1px solid rgb(150, 150, 150);
 }
@@ -25,4 +26,9 @@
 .sort-button:hover {
   cursor: pointer;
   background-color: rgb(151, 151, 151);
+}
+.search-panel {
+  position: absolute;
+  right: 4px;
+  top: 4px;
 }
