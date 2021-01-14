@@ -1,0 +1,7 @@
+.posts {
+  min-height: 500px;
+}
+.posts > .loading {
+  width: 100%;
+  height: 200px;
+}

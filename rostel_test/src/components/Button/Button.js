@@ -4,10 +4,11 @@ import { NavLink } from 'react-router-dom';
 
 export const Button = ({ name, link }) => {
   return (
-    <NavLink to={link}>
-      <div className='button'>
+    <div className='button'>
+      <NavLink to={link}>
         {name}
-      </div>
-    </NavLink>
+      </NavLink>
+    </div>
+
   )
 }
