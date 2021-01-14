@@ -6,6 +6,7 @@ import { Main } from './components/Main/Main';
 import { User } from './components/User/User';
 import { useState } from 'react';
 import { Posts } from './components/Posts/Posts';
+import { Users } from './components/Users/Users';
 
 function App() {
   const [userId, setUserId] = useState(null);
@@ -43,6 +44,7 @@ function App() {
         <Route path='/todos' render={() => <Todos getTodos={getTodos} setCurrentUser={setCurrentUser} getUsers={getUsers}/>} />
         <Route path='/posts' render={() => <Posts getPosts={getPosts} setCurrentUser={setCurrentUser} getUsers={getUsers}/>} />
         <Route path={`/users/${userId}`} render={() => <User getUserInfo={getUserInfo} userId={userId}/>}/>
+        <Route exact path='/users' render={() => <Users setCurrentUser={setCurrentUser} getUsers={getUsers}/>} />
       </div>
     </div>
   );

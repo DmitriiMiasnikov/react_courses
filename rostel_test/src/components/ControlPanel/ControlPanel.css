@@ -1,5 +1,6 @@
 .control-panel {
   padding-top: 0px;
+  border-bottom: 1px solid rgb(150, 150, 150);
 }
 .control-panel > div:not(:first-child) {
   border-left: 1px solid rgb(97, 97, 97);

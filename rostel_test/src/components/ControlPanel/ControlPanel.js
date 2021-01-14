@@ -6,8 +6,9 @@ export const ControlPanel = () => {
   return (
     <div className='control-panel'>
       <Button name={'main'} link={'/main'} />
-      <Button name={'all todos'} link={'/todos'} />
-      <Button name={'all posts'} link={'/posts'} />
+      <Button name={'todos'} link={'/todos'} />
+      <Button name={'posts'} link={'/posts'} />
+      <Button name={'users'} link={'/users'} />
     </div>
   )
 }

@@ -6,8 +6,9 @@
   display: inline-block;
 }
 .name > a {
-  color: black;
+  color: rgb(65, 65, 65);
   transition: .2s color;
+  text-decoration: none;
 }
 .name > a:hover {
   color: rgb(112, 111, 111);

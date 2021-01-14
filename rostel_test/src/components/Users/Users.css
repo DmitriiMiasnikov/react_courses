@@ -1,0 +1,11 @@
+.users > div {
+  padding: 10px 0 10px 10px;
+  border-bottom: 1px solid rgb(150, 150, 150);
+}
+.users > div > a {
+  text-decoration: none;
+  color: rgb(65, 65, 65);;
+}
+.users > div > a:hover {
+  color: rgb(112, 111, 111);
+}
