@@ -3,8 +3,11 @@ import { Redirect, Route } from 'react-router-dom';
 import { Todos } from './components/Todos/Todos';
 import { ControlPanel } from './components/ControlPanel/ControlPanel';
 import { Main } from './components/Main/Main';
+import { User } from './components/User/User';
+import { useState } from 'react';
 
 function App() {
+  const [userId, setUserId] = useState(null);
   const getTodos = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/todos')
     const todos = await res.json();
@@ -15,6 +18,10 @@ function App() {
     const userName = await res.json();
     return userName
   }
+  const setCurrentUser = async (id) => {
+    await getUserInfo(id);
+    setUserId(id);
+  }
 
   return (
     <div className="App">
@@ -22,7 +29,8 @@ function App() {
       <div className='content'>
         <Redirect from='/' to='/main' />
         <Route path='/main' render={() => <Main />} />
-        <Route path='/todos' render={() => <Todos getTodos={getTodos} getUserInfo={getUserInfo} />} />
+        <Route path='/todos' render={() => <Todos getTodos={getTodos} getUserInfo={getUserInfo} setCurrentUser={setCurrentUser}/>} />
+        <Route path={`/users/${userId}`} render={() => <User getUserInfo={getUserInfo} userId={userId}/>}/>
       </div>
     </div>
   );

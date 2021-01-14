@@ -5,6 +5,13 @@
 .name {
   display: inline-block;
 }
+.name > a {
+  color: black;
+  transition: .2s color;
+}
+.name > a:hover {
+  color: rgb(112, 111, 111);
+}
 .text {
   display: inline-block;
   padding-left: 15px;

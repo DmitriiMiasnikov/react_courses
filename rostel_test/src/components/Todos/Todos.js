@@ -3,7 +3,7 @@ import './Todos.css';
 import { Todo } from './Todo/Todo';
 import { Loading } from '../Loading/Loading';
 
-export const Todos = ({ getTodos, getUserInfo }) => {
+export const Todos = ({ getTodos, getUserInfo, setCurrentUser }) => {
   const [todoList, setTodoList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sortedByCompleted, setSortedByCompleted] = useState(false);
@@ -36,7 +36,7 @@ export const Todos = ({ getTodos, getUserInfo }) => {
       {
         !loading ? todoList.map((el, i) => {
           return (
-            <Todo item={el} key={i} getUserInfo={getUserInfo}/>
+            <Todo item={el} key={i} getUserInfo={getUserInfo} setCurrentUser={setCurrentUser}/>
           )
         }) : <Loading />
       }

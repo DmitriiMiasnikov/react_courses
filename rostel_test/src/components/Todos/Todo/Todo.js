@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Loading } from './../../Loading/Loading';
 import './Todo.css';
 
-export const Todo = ({ item, getUserInfo }) => {
+export const Todo = ({ item, getUserInfo, setCurrentUser }) => {
   const [userName, setUserName] = useState('');
   const [loading, setLoading] = useState(true);
   const styles = {
@@ -19,8 +20,8 @@ export const Todo = ({ item, getUserInfo }) => {
   }, [getUserInfo, item.userId])
   return (
     <div className='todo' style={styles}>
-      {!loading ? <div className='name'>
-        {userName}:
+      {!loading && userName ? <div className='name' onClick={() => setCurrentUser(item.id)}>
+        <NavLink to={`/users/${item.id}`}>{userName}</NavLink>:
       </div> : <Loading />}
       <div className='text'>
         {item.title}
