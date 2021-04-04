@@ -23,7 +23,7 @@ export function createTextStores() {
       "-",
       "",
       0,
-      ",",
+      ".",
       "=",
     ],
     addDigit(number){
@@ -48,18 +48,6 @@ export function createTextStores() {
       this.numberRight = '';
       this.operator = '';
       this.result = '';
-    },
-    sum(numberLeft, numberRight){
-      this.result = numberLeft + numberRight;
-    },
-    subtraction(numberLeft, numberRight){
-      this.result = numberLeft - numberRight;
-    },
-    multiplication(numberLeft, numberRight){
-      this.result = numberLeft * numberRight;
-    },
-    division(numberLeft, numberRight){
-      this.result = numberLeft / numberRight;
     },
     execution(){
       const numberLeft = Number(this.numberLeft);

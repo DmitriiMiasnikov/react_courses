@@ -12,7 +12,7 @@ const App = () => {
         setText((text) => `${text} ${button} `);
         textStore.addOperator(button);
       }
-    } else if (Number.isFinite(button) || ["(", ")", ","].includes(button)) {
+    } else if (Number.isFinite(button) || ["(", ")", "."].includes(button)) {
       textStore.addDigit(button);
       setText((text) => {
         if (text === '0') return button.toString();
