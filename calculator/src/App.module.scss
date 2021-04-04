@@ -1,0 +1,30 @@
+.app {
+  background-color: rgb(95, 95, 95);
+  width: 400px;
+  height: fit-content;
+  border-radius: 4px;
+  padding: 4px;
+  margin: 5px;
+  user-select: none;
+  .inputWrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgb(160, 160, 160);
+    border-radius: 4px;
+    height: 40px;
+    padding: 0 10px;
+    font-size: 20px;
+  }
+  .buttonsWrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .button {
+      margin-top: 5px;
+      &:not(:nth-child(4n + 4)) {
+        margin-right: 5px;
+      }
+    }
+  }
+}
