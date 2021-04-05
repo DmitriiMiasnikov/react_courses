@@ -9,7 +9,7 @@ const App = () => {
   const [text, setText] = useState("0");
   const [openScientificBlock, setOpenScientificBlock] = useState(false);
   const buttonHandler = (button) => {
-    if (["*", "/", "+", "-"].includes(button)) {
+    if (["*", "/", "+", "-", "^"].includes(button)) {
       if (!textStore.operator) {
         setText((text) => `${text} ${button} `);
         textStore.addOperator(button);
@@ -18,12 +18,20 @@ const App = () => {
         textStore.addOperator(button);
         setText(`${textStore.numberLeft} ${button} `);
       }
-    } else if (Number.isFinite(button) || ["(", ")", "."].includes(button)) {
-      textStore.addDigit(button);
-      setText((text) => {
-        if (text === "0") return button.toString();
-        return text.concat(button.toString());
-      });
+    } else if (Number.isFinite(button) || ["pi", "e", "."].includes(button)) {
+      if (["pi", "e"].includes(button)) {
+        switch (button) {
+          case 'pi': textStore.addPi(); setText('2.71828'); break;
+          case 'e': textStore.addPi(); setText('3.14159'); break;
+          default: break;
+        }
+      } else {
+        textStore.addDigit(button);
+        setText((text) => {
+          if (text === "0") return button.toString();
+          return text.concat(button.toString());
+        });
+      }
     } else if (button === "clear") {
       textStore.removeAllDigits();
       setText("0");
@@ -34,7 +42,7 @@ const App = () => {
     } else if (button === "=") {
       textStore.execution();
       setText(textStore.numberLeft);
-    } else if (['1/x'].includes(button)) {
+    } else if (["1/x", "sqrt", "^2"].includes(button)) {
       textStore.executionScientific(button);
       setText(textStore.numberLeft);
     }
