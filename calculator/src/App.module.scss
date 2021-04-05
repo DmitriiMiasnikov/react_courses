@@ -27,4 +27,38 @@
       }
     }
   }
+  .scientificWrap {
+    .buttonOpenScientific {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 40px;
+      background-color: #a0a0a0;
+      border-radius: 4px;
+      font-size: 20px;
+      transition: .2s background-color;
+      &:hover {
+        cursor: pointer;
+        background-color: #858585;
+      }
+    }
+    .buttonsScientificWrap {
+      margin-top: 5px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      transition: .2s height;
+      overflow: hidden;
+      height: 55px;
+      &.hide {
+        height: 0px;
+      }
+      .button {
+        &:not(:nth-child(4n + 4)) {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
 }
