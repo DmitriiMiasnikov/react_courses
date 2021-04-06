@@ -21,9 +21,16 @@ const App = () => {
     } else if (Number.isFinite(button) || ["pi", "e", "."].includes(button)) {
       if (["pi", "e"].includes(button)) {
         switch (button) {
-          case 'pi': textStore.addPi(); setText('2.71828'); break;
-          case 'e': textStore.addPi(); setText('3.14159'); break;
-          default: break;
+          case "e":
+            textStore.addE();
+            setText("2.71828");
+            break;
+          case "pi":
+            textStore.addPi();
+            setText("3.14159");
+            break;
+          default:
+            break;
         }
       } else {
         textStore.addDigit(button);
@@ -42,7 +49,7 @@ const App = () => {
     } else if (button === "=") {
       textStore.execution();
       setText(textStore.numberLeft);
-    } else if (["1/x", "sqrt", "^2"].includes(button)) {
+    } else if (["1/x", "sqrt", "^2", "ln", "log"].includes(button)) {
       textStore.executionScientific(button);
       setText(textStore.numberLeft);
     }
