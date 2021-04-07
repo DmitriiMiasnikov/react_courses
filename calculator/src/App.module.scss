@@ -12,18 +12,20 @@
     justify-content: flex-end;
     background-color: rgb(160, 160, 160);
     border-radius: 4px;
-    height: 40px;
-    padding: 0 10px;
+    padding: 10px 10px;
     font-size: 20px;
   }
   .buttonsWrap {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
     .button {
-      margin-top: 5px;
+      margin-top: 1%;
+      width: 24%;
+      height: 50px;
       &:not(:nth-child(4n + 4)) {
-        margin-right: 5px;
+        margin-right: 1%;
       }
     }
   }
@@ -37,6 +39,7 @@
       background-color: #a0a0a0;
       border-radius: 4px;
       font-size: 20px;
+      margin-top: 3px;
       transition: .2s background-color;
       &:hover {
         cursor: pointer;
@@ -44,21 +47,30 @@
       }
     }
     .buttonsScientificWrap {
-      margin-top: 5px;
+      margin-top: 0px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      transition: .2s height;
+      justify-content: space-between;
       overflow: hidden;
-      height: 110px;
+      height: calc(110px - 2%);
       &.hide {
         height: 0px;
       }
       .button {
+        margin-top: 1%;
+        width: 24%;
+        height: 50px;
         &:not(:nth-child(4n + 4)) {
-          margin-right: 5px;
+          margin-right: 1%;
         }
       }
     }
+  }
+}
+
+@media (max-width: 412px) {
+  .app {
+    width: calc(100% - 18px);
   }
 }

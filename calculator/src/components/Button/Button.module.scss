@@ -2,12 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 96px;
-  height: 50px;
+  width: 100%;
+  height: 100%;
   font-size: 20px;
   background-color: #8b8b8b;
   border-radius: 4px;
   transition: .2s background-color;
+  img {
+    width: 40%;
+  }
   &.inactive {
     pointer-events: none;
   }

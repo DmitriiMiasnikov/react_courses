@@ -86,7 +86,7 @@ export function createTextStores() {
         default:
           break;
       }
-      this.numberLeft = this.result.toString();
+      this.numberLeft = this.result.toPrecision(6).toString();
       this.numberRight = "";
       this.operator = "";
       this.result = "";
@@ -112,7 +112,7 @@ export function createTextStores() {
         default:
           break;
       }
-      this.numberLeft = this.result.toString();
+      this.numberLeft = this.result.toPrecision(6).toString();
       this.numberRight = "";
       this.operator = "";
       this.result = "";
